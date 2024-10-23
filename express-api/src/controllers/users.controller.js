@@ -3,7 +3,7 @@ const UsersModel = require('../models/user.model');
 // importamos el location model
 const LocationModel = require('../models/location.model');
 //importamos el teacher model
-const TeacherModel = require('../models/teacher.model');
+const TeacherModel = require('../models/todo.model');
 //importar el subject model
 const SubjectModel = require('../models/subject.model');
 //Importamos la librería para encriptar la clave

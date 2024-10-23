@@ -1,4 +1,4 @@
-const TeacherModel = require('../models/teacher.model.js');
+const TeacherModel = require('../models/');
 
 const getAllTeachers = async (req, res) => {
     /**#swagger.tags = ['Teachers']
