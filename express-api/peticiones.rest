@@ -1,0 +1,22 @@
+########
+### API ####
+#########
+
+######## Students
+###
+POST http://localhost:3000/api/todo
+Content-Type: application/json
+
+{
+    "name": "Emilio Alvarez", 
+    "nickname": "emilio123", 
+    "email": "emil.923@emil.com", 
+    "phone": "+34 2309234", 
+    "password": "12345", 
+    "date_of_birth": "1989-09-30", 
+    "status": 2, 
+    "role_id": 1, 
+    "location_id": 1,
+    "photo": "url"
+
+}

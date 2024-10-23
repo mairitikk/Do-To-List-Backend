@@ -1,21 +1,24 @@
-// Import packages and set the port 
-import bodyParser from "body-parser";
-import express from "express";
-import routes from "./src/routes/routes.js"
-const port = 3002;
-const app = express();
-// Use Node.js body parsing middleware 
-app.use(bodyParser.json());
-app.use(
-    bodyParser.urlencoded({
-        extended: true,
-    })
-);
+// Carga de protocolo http
+const http = require('http');
 
-routes(app);
+// Carga de aplicación de express
+const app = require('./src/app');
 
-// Start the server 
-const server = app.listen(port, (error) => {
-    if (error) return console.log(`Error: ${error}`);
-    console.log(`Server listening on port ${server.address().port}`);
-});
+// Carga de variables de entorno
+require('dotenv').config();
+
+// Configuracion de bbdd
+require('./src/config/db');
+
+// Creación del servidor
+const server = http.createServer(app);
+
+// Definición del puerto
+const PORT = process.env.PORT || 3000;
+
+// Arranque del servidor
+server.listen(PORT);
+
+// Handler de eventos del servidor
+server.on('listening', () => console.log(`Server running on port: ${PORT}`));
+server.on('error', (error) => console.log(error));

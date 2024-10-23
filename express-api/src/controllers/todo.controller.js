@@ -1,11 +1,11 @@
-const TeacherModel = require('../models/');
+const TodoModel = require('../models/todo.model');
 
 const getAllTeachers = async (req, res) => {
     /**#swagger.tags = ['Teachers']
        #swagger.description = 'Endpoint to get all Teachers.'
     */
     try {
-        const [result] = await TeacherModel.selectAllTeachers();
+        const [result] = await TodoModel.selectAllTeachers();
         res.json(result);
     } catch (error) {
         res.json({ fatal: error.message });
@@ -22,9 +22,9 @@ const getAllTeachersPagination = async (req, res) => {
         const { page, perPage } = req.params;
 
         // contamos el total de profes
-        const [resultCount] = await TeacherModel.countAllTeachers();
+        const [resultCount] = await TodoModel.countAllTeachers();
 
-        const [result] = await TeacherModel.selectAllTeachersLimit(parseInt(page), parseInt(perPage));
+        const [result] = await TodoModel.selectAllTeachersLimit(parseInt(page), parseInt(perPage));
         res.json({
             total_pages: parseInt(resultCount[0].count / parseInt(perPage)),
             results: result
@@ -40,7 +40,7 @@ const getAllTeachersByState = async (req, res) => {
     */
     try {
         const { teacherState } = req.params;
-        const [result] = await TeacherModel.selectAllTeachersByState(teacherState);
+        const [result] = await TodoModel.selectAllTeachersByState(teacherState);
         res.json(result);
     } catch (error) {
         res.json({ fatal: error.message });
@@ -53,7 +53,7 @@ const getTeacherById = async (req, res) => {
     */
     try {
         const { teacherId } = req.params;
-        const [result] = await TeacherModel.selectTeacherById(teacherId);
+        const [result] = await TodoModel.selectTeacherById(teacherId);
         res.json(result[0]);
     } catch (error) {
         res.json({ fatal: error.message });
@@ -66,7 +66,7 @@ const getTeacherByIdUserAllData = async (req, res) => {
     */
     try {
         const { userId } = req.params;
-        const [result] = await TeacherModel.selectTeacherByIdUserAllData(userId);
+        const [result] = await TodoModel.selectTeacherByIdUserAllData(userId);
         console.log(result)
         res.json(result[0]);
     } catch (error) {
@@ -77,7 +77,7 @@ const getTeacherByIdUserAllData = async (req, res) => {
 const getTeacherByUserId = async (req, res) => {
     try {
         const { userId } = req.params;
-        const [result] = await TeacherModel.selectTeacherByUserId(userId);
+        const [result] = await TodoModel.selectTeacherByUserId(userId);
         res.json(result);
     } catch (error) {
         res.json({ fatal: error.message });
@@ -94,8 +94,8 @@ const createTeacher = async (req, res) => {
             schema: { $ref: "#/definitions/Teachers" }
     } */
     try {
-        const [result] = await TeacherModel.insertTeacher(req.body);
-        const [teacher] = await TeacherModel.selectTeacherById(result.insertId);
+        const [result] = await TodoModel.insertTeacher(req.body);
+        const [teacher] = await TodoModel.selectTeacherById(result.insertId);
         res.json(teacher[0]);
     } catch (error) {
         res.json({ fatal: error.message });
@@ -113,7 +113,7 @@ const updateTeacher = async (req, res) => {
     } */
     try {
         const { teacherId } = req.params;
-        const result = await TeacherModel.updateFullTeacherById(teacherId, req.body);
+        const result = await TodoModel.updateFullTeacherById(teacherId, req.body);
         /*  if (result.changedRows == 0) {
              res.status(404).send('Teacher does not change ');
          } else {
@@ -131,7 +131,7 @@ const deleteTeacher = async (req, res) => {
     */
     try {
         const { teacherId } = req.params;
-        const [result] = await TeacherModel.deleteTeacherById(teacherId);
+        const [result] = await TodoModel.deleteTeacherById(teacherId);
 
         if (result.affectedRows == 0) {
             res.status(404).send('Teacher not found');
