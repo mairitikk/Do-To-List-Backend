@@ -1,20 +1,21 @@
 // Carga de protocolo http
-const http = require('http');
+import { createServer } from 'http';
 
 // Carga de aplicación de express
-const app = require('./src/app');
+import app from './src/app';
 
 // Carga de variables de entorno
-require('dotenv').config();
+import dotenv from 'dotenv'
+dotenv.config();
 
 // Configuracion de bbdd
-require('./src/config/db');
+import './src/config/db';
 
 // Creación del servidor
-const server = http.createServer(app);
+const server = createServer(app);
 
 // Definición del puerto
-const PORT = process.env.PORT || 3000;
+const PORT = dotenv.env.PORT || 3000;
 
 // Arranque del servidor
 server.listen(PORT);

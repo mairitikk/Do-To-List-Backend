@@ -1,21 +1,21 @@
 const router = require('express').Router();
-const TeacherController = require('../../controllers/teachers.controller');
+const TodoController = require('../../controllers/todos.controller');
 
 // Peticiones GET
-router.get('/', TeacherController.getAllTeachers);
-router.get('/pagination/:page/:perPage', TeacherController.getAllTeachersPagination);
-router.get('/:teacherId', TeacherController.getTeacherById);
-router.get('/all/:userId', TeacherController.getTeacherByIdUserAllData);
-router.get('/:teacherState', TeacherController.getAllTeachersByState);
-router.get('/user/:userId', TeacherController.getTeacherByUserId);
+router.get('/', TodoController.getAlltodos);
+router.get('/pagination/:page/:perPage', TodoController.getAlltodosPagination);
+router.get('/:todoId', TodoController.gettodoById);
+router.get('/all/:userId', TodoController.gettodoByIdUserAllData);
+router.get('/:todoState', TodoController.getAlltodosByState);
+router.get('/user/:userId', TodoController.gettodoByUserId);
 
 //Peticiones POST
-router.post('/', TeacherController.createTeacher);
+router.post('/', TodoController.createtodo);
 
 //Peticiones PUT
-router.put('/:teacherId', TeacherController.updateTeacher);
+router.put('/:todoId', TodoController.updatetodo);
 
 //Peticiones DELETE
-router.delete('/:teacherId', TeacherController.deleteTeacher);
+router.delete('/:todoId', TodoController.deletetodo);
 
 module.exports = router;
