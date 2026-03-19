@@ -3,8 +3,8 @@
 const router = require("express").Router();
 
 // Rutas
-//router.use('/todos', require('./api/todos'));
+router.use("/todo", require("./api/todos"));
 
-//router.use('/users', require('./api/users'));
+router.use("/user", require("./api/users"));
 
 module.exports = router;
