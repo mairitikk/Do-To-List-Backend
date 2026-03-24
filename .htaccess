@@ -1,0 +1,19 @@
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/cguzor5/drimt.co/lens/back_end"
+PassengerBaseURI "/back_end"
+PassengerNodejs "/home/cguzor5/nodevenv/drimt.co/lens/back_end/{NODE_VERSION}/bin/node"
+PassengerAppType node
+PassengerStartupFile index.js
+PassengerAppLogFile "/home/cguzor5/drimt.co/lens/back_end/logs/passenger.logs"
+# Enable Passenger explicitly
+<IfModule mod_passenger.c>
+	PassengerEnabled on
+</IfModule>
+
+# Allow symlinks if present
+Options +FollowSymLinks
+
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION BEGIN
+<IfModule Litespeed>
+</IfModule>
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION END
