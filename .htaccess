@@ -1,10 +1,10 @@
 # DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
-PassengerAppRoot "/home/cguzor5/drimt.co/lens/back_end"
+PassengerAppRoot "/home/cguzor5/drimt.co/task/back_end"
 PassengerBaseURI "/back_end"
-PassengerNodejs "/home/cguzor5/nodevenv/drimt.co/lens/back_end/{NODE_VERSION}/bin/node"
+PassengerNodejs "/home/cguzor5/nodevenv/drimt.co/task/back_end/{NODE_VERSION}/bin/node"
 PassengerAppType node
 PassengerStartupFile index.js
-PassengerAppLogFile "/home/cguzor5/drimt.co/lens/back_end/logs/passenger.logs"
+PassengerAppLogFile "/home/cguzor5/drimt.co/task/back_end/logs/passenger.logs"
 # Enable Passenger explicitly
 <IfModule mod_passenger.c>
 	PassengerEnabled on
